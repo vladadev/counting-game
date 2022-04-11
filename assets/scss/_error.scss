@@ -1,0 +1,29 @@
+@import '_var';
+
+#form-error ul {
+
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#form-error ul li {
+    list-style-type: circle;
+}
+
+// border err color
+.error-color {
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        border: 1px solid $input-error;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    select:focus {
+
+        border-color: $input-error !important;
+        box-shadow: 0 0 0 2px $input-error !important;
+    }
+}

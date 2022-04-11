@@ -1,0 +1,357 @@
+@font-face {
+  font-family: Comico;
+  src: url(../fonts/Comico.otf);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+select {
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  -ms-appearance: none !important;
+  appearance: none !important;
+  background: #ffffff !important;
+  border: 1px solid #4259a7 !important;
+  border-radius: 0 !important;
+  color: inherit !important;
+  display: block !important;
+  outline: 0 !important;
+  text-decoration: none !important;
+  width: 100% !important;
+}
+
+input[type="text"],
+input[type="number"],
+select, textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  background: #ffffff;
+  border: 1px solid #4259a7;
+  border-radius: 0;
+  color: inherit;
+  display: block;
+  outline: 0;
+  padding: 0 1em;
+  text-decoration: none;
+  width: 100%;
+}
+
+input[type="text"]:invalid,
+input[type="number"]:invalid,
+select:invalid,
+textarea:invalid {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #4259a7 !important;
+  -webkit-box-shadow: 0 0 0 2px #4259a7 !important;
+          box-shadow: 0 0 0 2px #4259a7 !important;
+}
+
+body {
+  font-family: Comico;
+  margin: 0;
+  padding: 0;
+  /* The Modal (background) */
+  /* Modal Content */
+  /* The Close Button */
+}
+
+body button {
+  width: 100%;
+  height: 70px;
+  border: none !important;
+  background-color: rgba(7, 17, 59, 0.938);
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+body .modal {
+  display: none;
+  z-index: 1;
+  width: 100%;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+body .modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-animation-name: modal-animation;
+  -webkit-animation-duration: 0.5s;
+  animation-name: modal-animation;
+  animation-duration: 0.5s;
+}
+
+@-webkit-keyframes modal-animation {
+  from {
+    top: 20%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes modal-animation {
+  from {
+    top: 20%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 595px) {
+  body .modal-content {
+    width: 80%;
+  }
+}
+
+body .close-modal {
+  color: #aaaaaa;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+body .close-modal:hover,
+body .close-modal:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+header {
+  background-color: rgba(7, 17, 59, 0.938);
+  box-shadow: 1px 6px 12px 1px rgba(30, 62, 97, 0.86);
+  -webkit-box-shadow: 1px 6px 12px 1px rgba(30, 62, 97, 0.86);
+  -moz-box-shadow: 1px 6px 12px 1px rgba(30, 62, 97, 0.86);
+}
+
+header .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .contestants {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main {
+  /* Countdown */
+}
+
+main .intro {
+  min-height: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  background-color: rgba(11, 26, 91, 0.938);
+  color: #ffffff;
+}
+
+main .start-game {
+  min-height: 200px;
+  background-color: rgba(22, 52, 182, 0.7);
+  color: #ffffff;
+}
+
+main .start-game button {
+  width: 100%;
+  height: 70px;
+  border: none !important;
+  background-color: rgba(7, 17, 59, 0.938);
+  border-radius: 10px;
+  color: #ffffff;
+  width: 50% !important;
+  color: #ffffff;
+}
+
+main #after-game-id {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+main .interval {
+  background-color: rgba(11, 26, 91, 0.938);
+  border-radius: 2px;
+  color: #ffffff;
+  padding: 2px 5px;
+}
+
+main .row-number {
+  min-width: 100%;
+  height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main .game-number {
+  font-size: 15vmax;
+}
+
+main .number-total {
+  text-align: center;
+}
+
+main #form-negative-result-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main #form-negative-result-wrap input[type="checkbox"] {
+  margin-right: 15px;
+}
+
+main #form-error ul {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+main #form-error ul li {
+  list-style-type: circle;
+}
+
+main .error-color input[type="text"],
+main .error-color input[type="number"],
+main .error-color select {
+  border: 1px solid #a22029;
+}
+
+main .error-color input[type="text"]:focus,
+main .error-color input[type="number"]:focus,
+main .error-color select:focus {
+  border-color: #a22029 !important;
+  -webkit-box-shadow: 0 0 0 2px #a22029 !important;
+          box-shadow: 0 0 0 2px #a22029 !important;
+}
+
+main #game-starting {
+  min-width: 100%;
+  height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main .countdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .countdown-number {
+  font-size: 15vmax;
+}
+
+main .countdown-bar-wrapper {
+  width: 40vmin;
+}
+
+main .countdown-bars {
+  width: 100%;
+  position: relative;
+}
+
+main .countdown-bars .countdown-bar-1 {
+  height: 15px;
+  background-color: #ffffff;
+  border-right: 1px solid rgba(11, 26, 91, 0.938);
+  border-bottom: 1px solid rgba(11, 26, 91, 0.938);
+  border-radius: 100px 100px 100px 10px;
+  position: absolute;
+}
+
+main .countdown-bars .countdown-bar-2 {
+  height: 15px;
+  border-radius: 100px 100px 100px 10px;
+  background-color: rgba(11, 26, 91, 0.938);
+  position: absolute;
+}
+
+footer {
+  color: #ffffff;
+}
+/*# sourceMappingURL=main.css.map */

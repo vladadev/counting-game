@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racunalica</title>
+
+    <!-- Bootstrap CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Compiled SASS -->
+    <link rel="stylesheet" href="assets/scss/main.css">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/ed67a757f4.js" crossorigin="anonymous"></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    
+        <!-- Game setup -->
+        <header class="py-5">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-4 logo">
+                        <a href="index.html">
+                            <p class="h1 text-light">Count-y</p>
+                        </a>
+                    </div>
+                    <div class="col-4 contestants">
+                        <a href="game.html" class="text-light">Game</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+
+            <div id="game" class="container">
+                <div class="row d-flex justify-content-center align-items-center align-content-center my-5 row-game-setup">
+                    <div class="col-lg-6 col-12 ">
+                        <!-- Player info -->
+                        <div class="info player-info">
+                            <form action="">
+        
+                                <!-- Nickname -->
+                                <h3 class="mt-3 text-center">Game options</h3>
+                                <h6 class="mb-5 text-center">Fill out the form correctly</h6>
+
+                                <!-- Form errors -->
+                                <div id="form-error" class="alert alert-danger d-none" role="alert">
+                                    <!-- Errors -->
+                                </div>
+
+                                <div class="form-floating mb-3 form-item">
+                                    <input type="text" name="nickname" id="nickname" class="form-control" placeholder="Nickname">
+                                    <label for="nickname">Nickname</label>
+                                </div>
+
+                                <!-- Game settings -->
+                                <div class="form-floating">
+                                    <select class="form-select" id="amount-of-numbers" name="amount" aria-label="Floating label select example">
+                                        <option value="0" selected>Chose...</option>
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                    </select>
+                                    <label for="amount-of-numbers">Amount of numbers to count</label>
+                                </div>
+
+                                <div class="pt-3">
+                                    <label for="speed-range" class="form-label">Time interval between numbers: <span class="interval"></span></label>
+                                    <input type="range" class="form-range" min="0.5" max="3" step="0.5" id="speed-range">
+                                    <small class="text-muted">Between 0.5 - 3s</small>
+                                </div>
+
+                                <div id="form-negative-result-wrap" class="form-check form-switch mt-4">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="negative-check">
+                                    <label class="form-check-label" for="negative-check">
+                                        Negative result?
+                                    </label>
+                                    <a href="#" title="Negative result?" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="If you are comfortable with negative result, check this option. ( Negative result is not guaranteed! )">
+                                        <img src="./assets/images/uncompressed/more-info.png" alt="More info" width="60px">
+                                    </a>
+                                    
+                                </div>
+                                <!-- Button trigger -->
+                                <button type="button" id="button-start-game" class="mt-5">
+                                    Start game !
+                                </button>
+                                
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Game countdown / Game starting -->
+            <div id="game-starting" class="container d-none">
+                <div class="row d-flex justify-content-center align-items-center align-content-center my-5 row-game-setup">
+                    <div class="col-12">
+                        <div class="game-countdown">
+                            <h1 class="mt-3 text-center">Game starts in:</h1>
+                            <div class="countdown">
+                                <h1 class="countdown-number text-center"></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center align-items-center align-content-center countdown-bar-wrapper">
+                    <div class="col-12">
+                        <div class="countdown-bars">
+                            <div class="countdown-bar-1" style="width: 100%"></div>
+                            <div class="countdown-bar-2" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game started - counting part -->
+            <div id="game-started" class="container d-none">
+                <div class="row d-flex justify-content-center align-items-center align-content-center my-5 row-game-setup">
+                    <div class="game">
+                        <div class="row d-flex justify-content-center align-items-center align-content-center row-number">
+                            <div class="col-lg-6 col-12 ">
+                                <h1 id="display-num-elem" class="game-number text-center"></h1>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <h4 class="current-num-index text-center text-muted"></h4>
+                            </div>
+                        </div>
+                        
+                        <div class="row d-flex justify-content-center align-items-center align-content-center my-5 row-game-setup after-game-block d-none">
+                            <div id="after-game-id" class="col-lg-6 col-12"> 
+                                <!-- Result -->
+                                <h3 class="mb-2 text-center">Enter result:</h3>
+                                <div class="form-floating mb-3 form-item">
+                                    <input type="number" name="result" id="result" class="form-control" placeholder="Result">
+                                    <label for="result">Result</label>
+                                </div>
+                                <button type="button" id="button-submit-result" class="mt-1">
+                                    Submit result !
+                                </button>
+                                <button type="button" id="button-close-game" class="mt-1 bg-dark">
+                                    Close game !
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </main>
+        <footer class="footer mt-auto py-5 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col align-middle align-self-center">
+                        <div class="footer-cr">
+                            <span class="align-middle">Copyright &copy; Vladimir Mijajlović</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h1 class="align-middle text-center"></h1>
+                <p class="align-middle text-center"></p>
+            </div>
+        
+        </div>
+        
+    
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/jquery-ui/jquery-ui.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+    <script type="text/javascript">
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+        })
+    </script>
+</body>
+</html>
